@@ -101,7 +101,10 @@ main { position: relative; z-index: 3; }
 /* ---- Hero ---- */
 .hero { min-height: 100vh; box-sizing: border-box; padding: 130px 24px 80px; display: flex; align-items: center; justify-content: center; }
 .hero-grid { width: 100%; max-width: 1160px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 64px; align-items: center; }
-.hero h1 { margin: 24px 0 0; font-size: clamp(40px, 6.2vw, 84px); line-height: 1.04; font-weight: 300; letter-spacing: -.025em; color: var(--text-strong); text-wrap: balance; }
+.hero-copy { container-type: inline-size; }
+/* One phrase per line: each line is ~8em wide, so size the type to the column */
+.hero h1 { margin: 24px 0 0; font-size: min(12cqi, 84px); line-height: 1.04; font-weight: 300; letter-spacing: -.025em; color: var(--text-strong); }
+.hero h1 span { display: block; white-space: nowrap; }
 .hero-actions { margin-top: 44px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .hero-photo-wrap { justify-self: center; width: min(100%, 440px); }
 .hero-photo {
