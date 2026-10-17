@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Susannah Bear · Data Projects Portfolio</title>
+<meta name="description" content="Data analytics and data science portfolio of Susannah Bear: Scrum Master and Vibe Coder working toward Data Scientist.">
+<meta name="theme-color" content="#05080F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="main.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div class="bg-photo" aria-hidden="true"></div>
+  <div class="bg-scrim" aria-hidden="true"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div id="glow" aria-hidden="true"></div>
+  <div id="dot" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-id">
+      <a href="#top">Susannah Bear</a>
+      <a class="nav-contact" href="mailto:susannahbear@gmail.com">susannahbear@gmail.com</a>
+      <a class="nav-contact" href="tel:4803385107">480-338-5107</a>
+    </div>
+    <div class="nav-links">
+      <a href="#mission">Mission</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button type="button" class="motion-toggle" id="motion-toggle" aria-pressed="false">Reduce motion</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="top" class="hero">
+      <div class="hero-grid">
+        <div data-reveal>
+          <div class="label">Scrum Master · Vibe Coder → Data Scientist</div>
+          <h1>Demystifying data. Delivering results.</h1>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-ghost" href="https://github.com/Garlid" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="hero-photo-wrap delay" data-reveal>
+          <div class="hero-photo">
+            <img src="assets/headshot.jpg" alt="Susannah Bear, professional headshot" width="880" height="880">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="mission">
+      <div class="mission-inner" data-reveal>
+        <div class="label">Mission</div>
+        <p>I am building a career in data science with a long-term goal of applying it to neurology. I aim to turn clinical and patient data into tools that help prevent and treat migraines, seizures, and chemical imbalances.</p>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <div data-reveal>
+          <div class="label">Projects</div>
+          <h2 class="section-title">Selected work</h2>
+        </div>
+        <div class="project-grid">
+          <div data-reveal>
+            <article class="card glass" data-tilt>
+              <div class="card-spec" data-spec></div>
+              <div class="card-head"><span class="card-num">01</span><span class="card-mark"></span></div>
+              <div class="card-image"><img src="assets/adventure-works.png" alt="Adventure Works dashboard preview" width="1358" height="773" loading="lazy"></div>
+              <h3>Adventure Works</h3>
+              <p class="card-summary">Organized customer data into an interactive, visually appealing dashboard.</p>
+              <div class="chips"><span class="chip">PowerBI</span></div>
+              <div class="card-foot">
+                <div class="card-foot-label">Key result</div>
+                <div class="card-result">Interactive PowerBI Dashboard</div>
+                <a class="card-link" href="https://github.com/Garlid/PowerBI-Portfolio/blob/main/Adventure%20Works%20Project/Adventure_Works_Report_Final.pdf" target="_blank" rel="noopener" aria-label="View project: Adventure Works">View project →</a>
+              </div>
+            </article>
+          </div>
+          <div data-reveal>
+            <article class="card glass" data-tilt>
+              <div class="card-spec" data-spec></div>
+              <div class="card-head"><span class="card-num">02</span><span class="card-mark"></span></div>
+              <div class="card-image"><img src="assets/food-hub.png" alt="Food Hub Data Analysis dashboard preview" width="1072" height="785" loading="lazy"></div>
+              <h3>Food Hub Data Analysis</h3>
+              <p class="card-summary">Analyzed order data to profile the customer base and turn the findings into actionable recommendations.</p>
+              <div class="chips"><span class="chip">Python</span><span class="chip">Univariate analysis</span><span class="chip">Multivariate analysis</span></div>
+              <div class="card-foot">
+                <div class="card-foot-label">Key result</div>
+                <div class="card-result">Data-backed recommendations to increase sales</div>
+                <a class="card-link" href="https://github.com/Garlid/Exploratory-Data-Analysis/blob/main/Food_Hub_Project/FDS_Project_LearnerNotebook_FullCode.ipynb%20-%20Colab.pdf" target="_blank" rel="noopener" aria-label="View project: Food Hub Data Analysis">View project →</a>
+              </div>
+            </article>
+          </div>
+          <div data-reveal>
+            <article class="card glass" data-tilt>
+              <div class="card-spec" data-spec></div>
+              <div class="card-head"><span class="card-num">03</span><span class="card-mark"></span></div>
+              <div class="card-image"><img src="assets/market-seg.png" alt="Market Segmentation with K-Medoids dashboard preview" width="686" height="486" loading="lazy"></div>
+              <h3>Market Segmentation with K-Medoids</h3>
+              <p class="card-summary">Analyzed purchase trends, segmented the customer base, and built personas for each segment.</p>
+              <div class="chips"><span class="chip">Python</span><span class="chip">Unsupervised ML</span><span class="chip">Statistical analysis</span></div>
+              <div class="card-foot">
+                <div class="card-foot-label">Key result</div>
+                <div class="card-result">Data-backed recommendations that let marketing target each customer segment more effectively</div>
+                <a class="card-link" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Presentation.pdf" target="_blank" rel="noopener" aria-label="View project: Market Segmentation with K-Medoids">View project →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-card glass" data-reveal>
+        <div class="about-photo">
+          <img src="assets/headshot.jpg" alt="Susannah Bear" width="880" height="880" loading="lazy">
+        </div>
+        <div>
+          <div class="label">About</div>
+          <h2>From data implementation toward data science.</h2>
+          <p class="about-bio">I have worked with data since 2020: converting and loading customer data for implementations, analyzing requirements as a business analyst, and writing SQL for a data services team. I lead Scrum teams alongside that work. My goal is a career as a Data Scientist focused on neurological health.</p>
+          <ol class="timeline">
+            <li><div class="timeline-date">Mar 2026 – Present</div><div><div class="timeline-role">Scrum Master &amp; Vibe Coder</div><div class="timeline-org">Paystack</div></div></li>
+            <li><div class="timeline-date">2025 – Mar 2026</div><div><div class="timeline-role">Data Analyst (alongside Scrum Master role)</div><div class="timeline-org">Data Services team · SQL requests</div></div></li>
+            <li><div class="timeline-date">2023 – Present</div><div><div class="timeline-role">Scrum Master</div><div class="timeline-org">Acumen/DCI</div></div></li>
+            <li><div class="timeline-date">2022 – Mar 2023</div><div><div class="timeline-role">Business Analyst</div><div class="timeline-org">Acumen/DCI</div></div></li>
+            <li><div class="timeline-date">Mar 2020 – 2022</div><div><div class="timeline-role">Data Implementation &amp; Conversion Analyst</div><div class="timeline-org">Implementation team · converted and loaded customer data files</div></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-inner" data-reveal>
+        <div class="label">Contact</div>
+        <h2>Let's work together.</h2>
+        <address class="contact-details">
+          <div>Susannah Bear</div>
+          <a href="mailto:susannahbear@gmail.com">susannahbear@gmail.com</a>
+          <a href="tel:4803385107">480-338-5107</a>
+        </address>
+        <div class="contact-cta">
+          <a class="btn btn-primary btn-lg" href="https://github.com/Garlid" target="_blank" rel="noopener">View GitHub</a>
+        </div>
+      </div>
+    </section>
+    <footer>© 2026 Susannah Bear</footer>
+  </main>
+</div>
+</body>
+</html>
