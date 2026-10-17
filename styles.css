@@ -66,12 +66,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-text); o
 .nav-id { display: flex; align-items: center; gap: 6px 18px; flex-wrap: wrap; }
 .nav-id a { color: var(--text); font-weight: 500; letter-spacing: .02em; font-size: 15px; white-space: nowrap; }
 .nav-id a.nav-contact:hover { color: var(--accent-light); }
-.nav-links { display: flex; gap: clamp(12px, 3vw, 30px); align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.nav-links { display: flex; gap: clamp(12px, 3vw, 30px); align-items: center; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
 .nav-links a { color: var(--text-muted); font-size: 13px; letter-spacing: .04em; }
 .nav-links a:hover { color: var(--text); }
 .motion-toggle {
   font-family: inherit; font-size: 12px; white-space: nowrap; flex-shrink: 0; color: var(--text-muted);
   background: transparent; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 6px 12px; transition: all .3s;
+  margin-left: calc(clamp(12px, 3vw, 30px) - 16px);
 }
 .motion-toggle:hover { color: var(--text); border-color: rgba(127,205,187,.5); }
 
@@ -173,4 +174,29 @@ footer { padding: 30px 24px 40px; text-align: center; font-size: 13px; color: va
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] { transition: none; }
+}
+
+/* ---- Narrow screens (kept last so they override the rules above) ---- */
+/* The one-line bar no longer fits, so stack it into three rows
+   (name + toggle, email + phone, section links) and let it scroll with the page */
+@media (max-width: 940px) {
+  .nav {
+    position: relative; top: auto; left: auto; transform: none; margin: 16px auto 0;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 10px 12px;
+    padding: 14px 18px; border-radius: 22px;
+  }
+  .nav-id { grid-column: 1; gap: 4px 16px; }
+  .nav-id a:first-child { flex-basis: 100%; font-size: 16px; }
+  .nav-id a.nav-contact { font-size: 14px; }
+  .motion-toggle { grid-column: 2; grid-row: 1; margin-left: 0; }
+  .nav-links {
+    grid-column: 1 / -1; margin-left: 0; justify-content: space-between; gap: 8px;
+    padding-top: 10px; border-top: 1px solid var(--divider);
+  }
+  .nav-links a { font-size: 14px; }
+  .hero { padding-top: 56px; }
+}
+/* Once the hero stacks into one column, let it size to its content instead of a full screen */
+@media (max-width: 760px) {
+  .hero { min-height: 0; padding-top: 40px; }
 }
