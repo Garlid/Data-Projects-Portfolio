@@ -131,7 +131,7 @@ main { position: relative; z-index: 3; }
 .card-mark { width: 10px; height: 10px; transform: rotate(45deg); border: 1px solid var(--accent-text); opacity: .7; }
 .card-image { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
 /* Dimmed so bright dashboard panels stay comfortable for light-sensitive viewers */
-.card-image img { width: 100%; display: block; filter: brightness(.78) saturate(.85); }
+.card-image img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; display: block; filter: brightness(.78) saturate(.85); }
 .card h3 { margin: 0; font-size: 26px; font-weight: 400; letter-spacing: -.01em; color: var(--text-strong); }
 .card-summary { margin: 0; font-size: 15.5px; line-height: 1.65; color: #A9BAC1; }
 .chips { display: flex; gap: 8px; flex-wrap: wrap; }
