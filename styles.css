@@ -196,7 +196,15 @@ footer { padding: 30px 24px 40px; text-align: center; font-size: 13px; color: va
   .nav-links a { font-size: 14px; }
   .hero { padding-top: 56px; }
 }
+/* Keep "→ Data Scientist" together: it drops to its own line only when both don't fit */
+.hero .label span { white-space: nowrap; }
 /* Once the hero stacks into one column, let it size to its content instead of a full screen */
 @media (max-width: 760px) {
   .hero { min-height: 0; padding-top: 40px; }
+}
+/* Phones: keep the three hero buttons on one row */
+@media (max-width: 760px) {
+  .hero-actions { flex-wrap: nowrap; gap: 8px; margin-top: 36px; }
+  .hero-actions .btn { padding: 13px 0; font-size: 14px; text-align: center; flex: 1 1 auto; }
+  .hero-actions .btn-primary { flex: 1.5 1 auto; padding: 13px 0; }
 }
