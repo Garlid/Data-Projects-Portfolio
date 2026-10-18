@@ -66,7 +66,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-text); o
 }
 /* Slides away while scrolling down; returns on scroll up */
 .nav.nav-hidden { transform: translateX(-50%) translateY(-140%); opacity: 0; pointer-events: none; }
-.nav:focus-within { transform: translateX(-50%); opacity: 1; pointer-events: auto; }
+.nav:has(:focus-visible) { transform: translateX(-50%); opacity: 1; pointer-events: auto; }
 .nav-id { display: flex; align-items: center; gap: 6px 18px; flex-wrap: wrap; }
 .nav-id a { color: var(--text); font-weight: 500; letter-spacing: .02em; font-size: 15px; white-space: nowrap; }
 .nav-id a.nav-contact:hover { color: var(--accent-light); }
