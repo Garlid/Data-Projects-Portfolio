@@ -38,6 +38,16 @@
     if (Math.abs(scrollY - cur) > 4) cur = target = scrollY;
   }, { passive: true });
 
+  // ---- Nav: hide on scroll down, show on scroll up ----
+  const nav = document.querySelector('.nav');
+  let lastY = scrollY;
+  addEventListener('scroll', () => {
+    const y = scrollY, d = y - lastY;
+    if (y < 120 || d < -6) nav.classList.remove('nav-hidden');
+    else if (d > 6) nav.classList.add('nav-hidden');
+    if (Math.abs(d) > 6) lastY = y;
+  }, { passive: true });
+
   // ---- Anchor links ----
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
