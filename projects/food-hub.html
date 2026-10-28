@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Food Hub Data Analysis · Susannah Bear</title>
+<meta name="description" content="Exploratory analysis of 1,898 food-delivery orders: 4 of 178 restaurants bring in 30% of all order value.">
+<meta name="theme-color" content="#05080F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css?v=1">
+<script src="chart.js?v=1" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <a href="../index.html#projects">← Back to portfolio</a>
+  <a class="name" href="../index.html">Susannah Bear</a>
+</header>
+
+<main class="wrap">
+  <p class="label eyebrow">Project 02 · Exploratory data analysis</p>
+  <h1>4 of 178 restaurants bring in <em>30%</em> of all order value.</h1>
+  <p class="lede">A food delivery aggregator wanted to understand its customers so it could grow revenue. I analyzed 1,898 orders and found that sales are concentrated in a handful of restaurants, which tells the company exactly where its promotions will pay off.</p>
+
+  <figure class="hero-fig">
+    <h2 class="fig-title">Share of total order value, top 10 restaurants</h2>
+    <p class="fig-sub">The highlighted four account for 29.7% of all order value. The other 174 restaurants share the rest.</p>
+    <ul class="key" aria-hidden="true">
+      <li><i style="background:var(--series-1)"></i>Top 4: recommended for promotion</li>
+      <li><i style="background:var(--series-context)"></i>Next 6 restaurants</li>
+    </ul>
+    <div class="chart" id="chart"></div>
+    <p class="source">Source: foodhub_order.csv (1,898 orders, 178 restaurants). Order value = sum of cost_of_the_order.</p>
+    <details class="data">
+      <summary>View data table</summary>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Restaurant</th><th class="num">Orders</th><th class="num">Order value</th><th class="num">Share</th></tr></thead>
+          <tbody>
+            <tr><td>Shake Shack</td><td class="num">219</td><td class="num">$3,579.53</td><td class="num">11.4%</td></tr>
+            <tr><td>The Meatball Shop</td><td class="num">132</td><td class="num">$2,145.21</td><td class="num">6.9%</td></tr>
+            <tr><td>Blue Ribbon Sushi</td><td class="num">119</td><td class="num">$1,903.95</td><td class="num">6.1%</td></tr>
+            <tr><td>Blue Ribbon Fried Chicken</td><td class="num">96</td><td class="num">$1,662.29</td><td class="num">5.3%</td></tr>
+            <tr><td>Parm</td><td class="num">68</td><td class="num">$1,112.76</td><td class="num">3.6%</td></tr>
+            <tr><td>RedFarm Broadway</td><td class="num">59</td><td class="num">$965.13</td><td class="num">3.1%</td></tr>
+            <tr><td>RedFarm Hudson</td><td class="num">55</td><td class="num">$921.21</td><td class="num">2.9%</td></tr>
+            <tr><td>TAO</td><td class="num">49</td><td class="num">$834.50</td><td class="num">2.7%</td></tr>
+            <tr><td>Han Dynasty</td><td class="num">46</td><td class="num">$755.29</td><td class="num">2.4%</td></tr>
+            <tr><td>Blue Ribbon Sushi Bar &amp; Grill</td><td class="num">44</td><td class="num">$666.62</td><td class="num">2.1%</td></tr>
+            <tr><td>All 178 restaurants</td><td class="num">1,898</td><td class="num">$31,314.82</td><td class="num">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </figure>
+
+  <section class="stats" aria-label="Key numbers">
+    <div class="stat glass"><div class="stat-value accent">60%</div><div class="stat-label">of the company's commission revenue comes from orders over $20, which are only 29% of orders</div></div>
+    <div class="stat glass"><div class="stat-value">55%</div><div class="stat-label">of order value is American and Japanese cuisine</div></div>
+    <div class="stat glass"><div class="stat-value">$6,166</div><div class="stat-label">net commission revenue, at 25% on orders over $20 and 15% on orders over $5</div></div>
+    <div class="stat glass"><div class="stat-value">1,898</div><div class="stat-label">orders from 178 restaurants and 14 cuisines analyzed</div></div>
+  </section>
+
+  <section class="story">
+    <div class="story-card glass">
+      <h2>Problem</h2>
+      <p>A food delivery aggregator wanted to understand demand across its restaurants and customers so it could improve the customer experience and grow revenue.</p>
+    </div>
+    <div class="story-card glass">
+      <h2>What I did</h2>
+      <ul>
+        <li>Cleaned and profiled the order data in Python (pandas)</li>
+        <li>Ran univariate analysis: histograms, box plots, count plots</li>
+        <li>Ran multivariate analysis: cost, cuisine, rating, and prep and delivery times</li>
+        <li>Modeled the commission structure to estimate company revenue</li>
+      </ul>
+    </div>
+    <div class="story-card glass">
+      <h2>Recommendation</h2>
+      <ul>
+        <li><strong>Promote the top 4</strong>: Shake Shack, The Meatball Shop, Blue Ribbon Sushi and Blue Ribbon Fried Chicken</li>
+        <li><strong>Push higher-value items</strong> from their menus, since orders over $20 earn a 25% commission</li>
+        <li><strong>Focus on American cuisine</strong> and restaurants rated 4–5</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="tools">
+    <span class="label">Tools</span>
+    <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">Seaborn</span><span class="chip">Matplotlib</span><span class="chip">Google Colab</span>
+  </div>
+
+  <section class="links glass">
+    <h2>See the work</h2>
+    <p>The full notebook, raw data and write-up are on GitHub.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://github.com/Garlid/Exploratory-Data-Analysis/tree/main/Food_Hub_Project" target="_blank" rel="noopener">Explore the repo ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Exploratory-Data-Analysis/blob/main/Food_Hub_Project/FDS_Project_LearnerNotebook_FullCode.ipynb" target="_blank" rel="noopener">Python notebook <small>.ipynb</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Exploratory-Data-Analysis/blob/main/Food_Hub_Project/FDS_Project_LearnerNotebook_FullCode.ipynb%20-%20Colab.pdf" target="_blank" rel="noopener">Notebook as PDF</a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Exploratory-Data-Analysis/blob/main/Food_Hub_Project/foodhub_order.csv" target="_blank" rel="noopener">Raw data <small>.csv</small></a>
+    </div>
+  </section>
+
+  <nav class="next" aria-label="More projects">
+    <a href="adventure-works.html">← Adventure Works</a>
+    <a href="market-segmentation.html">Market Segmentation →</a>
+  </nav>
+</main>
+<footer>© 2026 Susannah Bear</footer>
+
+<script>
+addEventListener('DOMContentLoaded', () => {
+  const rows = [
+    ['Shake Shack', 11.4, 219, '$3,579.53'],
+    ['The Meatball Shop', 6.9, 132, '$2,145.21'],
+    ['Blue Ribbon Sushi', 6.1, 119, '$1,903.95'],
+    ['Blue Ribbon Fried Chicken', 5.3, 96, '$1,662.29'],
+    ['Parm', 3.6, 68, '$1,112.76'],
+    ['RedFarm Broadway', 3.1, 59, '$965.13'],
+    ['RedFarm Hudson', 2.9, 55, '$921.21'],
+    ['TAO', 2.7, 49, '$834.50'],
+    ['Han Dynasty', 2.4, 46, '$755.29'],
+    ['Blue Ribbon Sushi Bar & Grill', 2.1, 44, '$666.62']
+  ];
+  barChart(document.getElementById('chart'), {
+    ariaLabel: 'Share of total order value for the top 10 restaurants. The top four account for 29.7 percent.',
+    series: [{ name: 'Share of order value', color: 'var(--series-1)' }],
+    max: 12, ticks: [0, 3, 6, 9, 12], fmt: (v) => v.toFixed(1) + '%', tickFmt: (v) => v + '%',
+    band: { from: 0, to: 3 },
+    rows: rows.map(([label, pct, orders, value], i) => ({
+      label, values: [pct],
+      color: i < 4 ? 'var(--series-1)' : 'var(--series-context)',
+      tip: [['Share of order value', pct + '%'], ['Order value', value], ['Orders', orders]]
+    }))
+  });
+});
+</script>
+</body>
+</html>
