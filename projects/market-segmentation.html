@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Market Segmentation · Susannah Bear</title>
-<meta name="description" content="Customer segmentation for a fine-foods retailer: 1 in 3 customers drives 72% of spending, so each of five segments gets its own campaign.">
+<meta name="description" content="Customer segmentation for a fine-foods retailer: 2 in 5 customers drive 81% of spending, so each of five segments gets its own campaign.">
 <meta name="theme-color" content="#05080F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,30 +20,30 @@
 
 <main class="wrap">
   <p class="label eyebrow">Project 03 · Unsupervised machine learning</p>
-  <h1>1 in 3 customers drives <em>72%</em> of spending.</h1>
+  <h1>2 in 5 customers drive <em>81%</em> of spending.</h1>
   <p class="lede">A fine-foods retailer was losing revenue, struggling to win new customers, and seeing its campaigns convert poorly. I segmented 2,227 customers by purchasing behavior. The five segments that emerged are so different that a single campaign can't serve them all, so each one gets its own message and channel.</p>
-  <p class="course-note"><strong>Capstone project</strong> MIT Professional Education, Applied Data Science Program. Presented live on Dec 13, 2023.</p>
+  <p class="course-note"><strong>Capstone project</strong> MIT Professional Education, Applied Data Science Program. Presented live on Dec 13, 2023.<br><strong>Revised Oct 2026</strong> The figures below come from a corrected notebook. A labeling bug meant the original profiles described K-Means segments rather than the K-Medoids model I selected. The fix was made by Claude, an AI assistant. <a href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Revised_Analysis_2026/REVISION_NOTES.md" target="_blank" rel="noopener">See what changed</a></p>
 
   <figure class="hero-fig">
     <h2 class="fig-title">Each segment's share of customers vs. share of total spending</h2>
-    <p class="fig-sub">Cooking Enthusiasts and Wine Connoisseurs are 32% of customers but 72% of spending. Budget-Conscious Shoppers and Convenience Seekers are half the customer base but just 9% of spending.</p>
+    <p class="fig-sub">Wine Connoisseurs and Cooking Enthusiasts are 38% of customers but 81% of spending. Convenience Seekers and Budget-Conscious Shoppers are 43% of customers but just 6% of spending.</p>
     <ul class="key">
       <li><i style="background:var(--series-2)"></i>Share of customers</li>
       <li><i style="background:var(--series-1)"></i>Share of total spending</li>
     </ul>
     <div class="chart" id="chart"></div>
-    <p class="source">Source: Market_Segmentation_Data.csv (2,240 customers; 13 outliers and invalid records removed). Spending = total spent across all product categories over two years.</p>
+    <p class="source">Source: Market_Segmentation_Data.csv (2,240 customers; 13 outliers and invalid records removed). Spending = total spent across all product categories over two years. Segments from K-Medoids (K=5), revised notebook.</p>
     <details class="data">
       <summary>View data table</summary>
       <div class="table-scroll">
         <table>
           <thead><tr><th>Segment</th><th class="num">Customers</th><th class="num">Share of customers</th><th class="num">Share of spending</th></tr></thead>
           <tbody>
-            <tr><td>Cooking Enthusiasts</td><td class="num">447</td><td class="num">20.1%</td><td class="num">37.9%</td></tr>
-            <tr><td>Wine Connoisseurs</td><td class="num">258</td><td class="num">11.6%</td><td class="num">34.0%</td></tr>
-            <tr><td>Foodie Adventurers</td><td class="num">420</td><td class="num">18.9%</td><td class="num">19.0%</td></tr>
-            <tr><td>Budget-Conscious Shoppers</td><td class="num">518</td><td class="num">23.3%</td><td class="num">4.9%</td></tr>
-            <tr><td>Convenience Seekers</td><td class="num">584</td><td class="num">26.2%</td><td class="num">4.2%</td></tr>
+            <tr><td>Wine Connoisseurs</td><td class="num">373</td><td class="num">16.7%</td><td class="num">45.6%</td></tr>
+            <tr><td>Cooking Enthusiasts</td><td class="num">484</td><td class="num">21.7%</td><td class="num">35.2%</td></tr>
+            <tr><td>Foodie Adventurers</td><td class="num">403</td><td class="num">18.1%</td><td class="num">13.3%</td></tr>
+            <tr><td>Convenience Seekers</td><td class="num">512</td><td class="num">23.0%</td><td class="num">3.1%</td></tr>
+            <tr><td>Budget-Conscious Shoppers</td><td class="num">455</td><td class="num">20.4%</td><td class="num">2.8%</td></tr>
           </tbody>
         </table>
       </div>
@@ -53,8 +53,8 @@
   <section class="stats" aria-label="Key numbers">
     <div class="stat glass"><div class="stat-value">−61.8%</div><div class="stat-label">revenue drop from 2013 to 2014: the problem</div></div>
     <div class="stat glass"><div class="stat-value">5.6%</div><div class="stat-label">average conversion rate across 5 of the last 6 campaigns</div></div>
-    <div class="stat glass"><div class="stat-value accent">10×</div><div class="stat-label">more campaign offers accepted by Wine Connoisseurs than by Convenience Seekers</div></div>
-    <div class="stat glass"><div class="stat-value accent">$1,708</div><div class="stat-label">to run one tailored campaign across all five segments</div></div>
+    <div class="stat glass"><div class="stat-value accent">9×</div><div class="stat-label">more campaign offers accepted by Wine Connoisseurs than by Convenience Seekers</div></div>
+    <div class="stat glass"><div class="stat-value accent">$1,794</div><div class="stat-label">to run one tailored campaign across all five segments</div></div>
   </section>
 
   <h2 class="section-h">The plan: one campaign per segment</h2>
@@ -64,16 +64,16 @@
       <table>
         <thead><tr><th>Segment</th><th class="num">Customers</th><th class="num">Avg. spend (2 yrs)</th><th class="num">Offers accepted</th><th>Channels</th><th class="num">Cost / campaign</th></tr></thead>
         <tbody>
-          <tr><td>Wine Connoisseurs</td><td class="num">258</td><td class="num">$1,778</td><td class="num">1.53</td><td>Magazine + direct mail</td><td class="num">$386.17</td></tr>
-          <tr><td>Cooking Enthusiasts</td><td class="num">447</td><td class="num">$1,145</td><td class="num">0.58</td><td>Email + direct mail</td><td class="num">$241.38</td></tr>
-          <tr><td>Foodie Adventurers</td><td class="num">420</td><td class="num">$611</td><td class="num">0.34</td><td>Display ads + email</td><td class="num">$298.20</td></tr>
-          <tr><td>Budget-Conscious Shoppers</td><td class="num">518</td><td class="num">$127</td><td class="num">0.21</td><td>Display ads + email</td><td class="num">$367.78</td></tr>
-          <tr><td>Convenience Seekers</td><td class="num">584</td><td class="num">$97</td><td class="num">0.15</td><td>Display ads + email</td><td class="num">$414.64</td></tr>
-          <tr><td>Total</td><td class="num">2,227</td><td class="num"></td><td class="num"></td><td></td><td class="num">$1,708.17</td></tr>
+          <tr><td>Wine Connoisseurs</td><td class="num">373</td><td class="num">$1,650</td><td class="num">1.36</td><td>Magazine + direct mail</td><td class="num">$559.50</td></tr>
+          <tr><td>Cooking Enthusiasts</td><td class="num">484</td><td class="num">$981</td><td class="num">0.43</td><td>Email + direct mail</td><td class="num">$261.36</td></tr>
+          <tr><td>Foodie Adventurers</td><td class="num">403</td><td class="num">$444</td><td class="num">0.30</td><td>Display ads + email</td><td class="num">$286.13</td></tr>
+          <tr><td>Budget-Conscious Shoppers</td><td class="num">455</td><td class="num">$84</td><td class="num">0.18</td><td>Display ads + email</td><td class="num">$323.05</td></tr>
+          <tr><td>Convenience Seekers</td><td class="num">512</td><td class="num">$83</td><td class="num">0.15</td><td>Display ads + email</td><td class="num">$363.52</td></tr>
+          <tr><td>Total</td><td class="num">2,227</td><td class="num"></td><td class="num"></td><td></td><td class="num">$1,793.56</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="source">Offers accepted = average number of the six past campaign offers each customer accepted. Channel costs are per contact, from published industry pricing (sources in the written summary).</p>
+    <p class="source">Offers accepted = average number of the six past campaign offers each customer accepted. Channel costs are per contact, from published industry pricing (sources in the written summary), applied to the revised segment sizes.</p>
   </div>
 
   <section class="story">
@@ -108,12 +108,14 @@
 
   <section class="links glass">
     <h2>See the work</h2>
-    <p>The code, raw data, written summary and stakeholder presentation are on GitHub.</p>
+    <p>The revised notebook runs end to end from the repo. The original December 2023 code, write-up and presentation are preserved unchanged next to it.</p>
     <div class="btns">
       <a class="btn btn-primary" href="https://github.com/Garlid/Unsupervised-Machine-Learning/tree/main/Market_Segmentation_With_K-Medoids" target="_blank" rel="noopener">Explore the repo ↗</a>
-      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Presentation.pdf" target="_blank" rel="noopener">Presentation <small>PDF</small></a>
-      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Summary.pdf" target="_blank" rel="noopener">Written summary <small>PDF</small></a>
-      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Notebook_PDF.pdf" target="_blank" rel="noopener">Notebook <small>PDF</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Revised_Analysis_2026/Market_Segmentation_Revised.ipynb" target="_blank" rel="noopener">Revised notebook <small>.ipynb</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Revised_Analysis_2026/REVISION_NOTES.md" target="_blank" rel="noopener">Revision notes</a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Presentation.pdf" target="_blank" rel="noopener">Original presentation <small>PDF</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Summary.pdf" target="_blank" rel="noopener">Original summary <small>PDF</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Notebook_PDF.pdf" target="_blank" rel="noopener">Original notebook <small>PDF</small></a>
       <a class="btn btn-ghost" href="https://github.com/Garlid/Unsupervised-Machine-Learning/blob/main/Market_Segmentation_With_K-Medoids/Market_Segmentation_Data.csv" target="_blank" rel="noopener">Raw data <small>.csv</small></a>
     </div>
   </section>
@@ -128,19 +130,19 @@
 <script>
 addEventListener('DOMContentLoaded', () => {
   const rows = [
-    ['Cooking Enthusiasts', 20.1, 37.9, 447, '$1,145'],
-    ['Wine Connoisseurs', 11.6, 34.0, 258, '$1,778'],
-    ['Foodie Adventurers', 18.9, 19.0, 420, '$611'],
-    ['Budget-Conscious Shoppers', 23.3, 4.9, 518, '$127'],
-    ['Convenience Seekers', 26.2, 4.2, 584, '$97']
+    ['Wine Connoisseurs', 16.7, 45.6, 373, '$1,650'],
+    ['Cooking Enthusiasts', 21.7, 35.2, 484, '$981'],
+    ['Foodie Adventurers', 18.1, 13.3, 403, '$444'],
+    ['Convenience Seekers', 23.0, 3.1, 512, '$83'],
+    ['Budget-Conscious Shoppers', 20.4, 2.8, 455, '$84']
   ];
   barChart(document.getElementById('chart'), {
     ariaLabel: 'Share of customers versus share of spending for five customer segments.',
     series: [{ name: 'Share of customers', color: 'var(--series-2)' }, { name: 'Share of spending', color: 'var(--series-1)' }],
-    max: 40, ticks: [0, 10, 20, 30, 40], fmt: (v) => v.toFixed(1) + '%', tickFmt: (v) => v + '%',
+    max: 50, ticks: [0, 10, 20, 30, 40, 50], fmt: (v) => v.toFixed(1) + '%', tickFmt: (v) => v + '%',
     rows: rows.map(([label, cust, spend, n, avg]) => ({
       label, values: [cust, spend],
-      tip: [['Customers', n.toLocaleString() + ' (' + cust + '%)'], ['Share of spending', spend.toFixed(1) + '%'], ['Avg. spend, 2 yrs', avg]]
+      tip: [['Customers', n.toLocaleString() + ' (' + cust.toFixed(1) + '%)'], ['Share of spending', spend.toFixed(1) + '%'], ['Avg. spend, 2 yrs', avg]]
     }))
   });
 });
