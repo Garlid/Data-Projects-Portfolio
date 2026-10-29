@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adventure Works Dashboard · Susannah Bear</title>
+<meta name="description" content="A four-page Power BI report built from 9 raw CSV tables: revenue more than tripled year over year while returns held at 2.2%.">
+<meta name="theme-color" content="#05080F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css?v=1">
+</head>
+<body>
+<header class="topbar">
+  <a href="../index.html#projects">← Back to portfolio</a>
+  <a class="name" href="../index.html">Susannah Bear</a>
+</header>
+
+<main class="wrap">
+  <p class="label eyebrow">Project 01 · Power BI dashboard</p>
+  <h1>Revenue more than <em>tripled</em> year over year, and returns held at 2.2%.</h1>
+  <p class="lede">I turned 9 raw CSV tables for a bike retailer into an interactive Power BI report. Leadership can see what they sold, what they kept and what's coming back, all on one screen, then drill into products, regions and customers.</p>
+  <p class="course-note"><strong>Course project</strong> Built for Maven Analytics' <em>Microsoft Power BI Desktop for Business Intelligence</em> (Udemy), completed Dec 2024. Adventure Works is a fictional sample company.</p>
+
+  <figure class="hero-fig">
+    <h2 class="fig-title">Executive summary page</h2>
+    <p class="fig-sub">Headline KPIs, the revenue trend with its trend line, orders by category, the top 10 products with return rates, and month-over-month cards.</p>
+    <div class="shot" style="margin-top:18px">
+      <img src="img/aw-executive.webp" width="1816" height="1051" alt="Adventure Works executive dashboard showing $24.9M revenue, $10.5M profit, 25.2K orders and a 2.2% return rate. A revenue line climbs from about $0.5M a month in 2020 to $1.8M in mid-2022. Bars show Accessories 17.0K orders, Bikes 13.9K and Clothing 7.0K, next to a top 10 products table.">
+    </div>
+    <p class="source">Every KPI on this page was re-checked against the raw sales, product and returns CSVs.</p>
+  </figure>
+
+  <section class="stats" aria-label="Key numbers">
+    <div class="stat glass"><div class="stat-value accent">3.1×</div><div class="stat-label">revenue in the first half of 2022 vs. the first half of 2021 ($9.2M vs. $3.0M)</div></div>
+    <div class="stat glass"><div class="stat-value">$24.9M</div><div class="stat-label">revenue from 25.2K orders, Jan 2020 to Jun 2022</div></div>
+    <div class="stat glass"><div class="stat-value">42%</div><div class="stat-label">profit margin ($10.5M profit)</div></div>
+    <div class="stat glass"><div class="stat-value">2.2%</div><div class="stat-label">return rate. Shorts are the most-returned product type.</div></div>
+  </section>
+
+  <h2 class="section-h">Four pages, built for different audiences</h2>
+  <p class="section-sub">Executives get the summary above. Managers and analysts drill into geography, products and customers.</p>
+  <div class="gallery">
+    <figure>
+      <div class="shot"><img src="img/aw-map.webp" width="1400" height="810" loading="lazy" alt="Map page: bubbles sized by revenue over the United States, Canada, the United Kingdom, France, Germany and Australia, with continent filter buttons."></div>
+      <figcaption>Geography: revenue by country, filterable by continent</figcaption>
+    </figure>
+    <figure>
+      <div class="shot"><img src="img/aw-product.webp" width="1400" height="810" loading="lazy" alt="Product detail page: gauges comparing monthly orders, revenue and profit to target, a price-adjustment slider, and profit trend charts."></div>
+      <figcaption>Product detail: monthly targets, a what-if price slider and profit trend</figcaption>
+    </figure>
+    <figure>
+      <div class="shot"><img src="img/aw-customer.webp" width="1400" height="810" loading="lazy" alt="Customer detail page: 10.5K unique customers, $875 revenue per customer, donut charts by income and occupation, and a top 100 customers table."></div>
+      <figcaption>Customers: 10.5K customers, $875 revenue per customer, top 100 by revenue</figcaption>
+    </figure>
+  </div>
+
+  <section class="story">
+    <div class="story-card glass">
+      <h2>Problem</h2>
+      <p>Sales, returns, products, customers and territories sat in <strong>9 separate CSV files</strong>. Leadership had no single view of performance, profitability or what was being sent back.</p>
+    </div>
+    <div class="story-card glass">
+      <h2>What I did</h2>
+      <ul>
+        <li><strong>Power Query:</strong> cleaned, typed and shaped each table, appended three years of sales and built a calendar table</li>
+        <li><strong>Data model:</strong> a snowflake schema with sales and returns fact tables and product, category, customer, territory and date lookups</li>
+        <li><strong>DAX:</strong> a measures table for revenue, profit, return rate, targets and time intelligence (previous month, YTD)</li>
+        <li><strong>Design:</strong> bookmarks, page navigation, slicers and edited visual interactions</li>
+      </ul>
+    </div>
+    <div class="story-card glass">
+      <h2>What it shows</h2>
+      <ul>
+        <li>Revenue accelerated sharply from mid-2021</li>
+        <li><strong>Accessories</strong> drive the most orders (17.0K), ahead of Bikes (13.9K)</li>
+        <li>Helmets have the highest return rates in the top 10 products (up to 3.3%), so they're worth a quality or sizing review</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="tools">
+    <span class="label">Tools</span>
+    <span class="chip">Power BI Desktop</span><span class="chip">Power Query</span><span class="chip">DAX</span><span class="chip">Data modeling</span><span class="chip">Snowflake schema</span>
+  </div>
+
+  <section class="links glass">
+    <h2>See the work</h2>
+    <p>Download the .pbix file to explore the data model, relationships and DAX measures in Power BI Desktop. The raw CSVs are in the repo.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://github.com/Garlid/PowerBI-Portfolio/raw/main/Adventure%20Works%20Project/Adventure_Works_Report_Final.pbix">Download the .pbix <small>2.5 MB</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/PowerBI-Portfolio/tree/main/Adventure%20Works%20Project" target="_blank" rel="noopener">Explore the repo ↗</a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/PowerBI-Portfolio/blob/main/Adventure%20Works%20Project/Adventure_Works_Report_Final.pdf" target="_blank" rel="noopener">Full report <small>PDF</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/PowerBI-Portfolio/tree/main/Adventure%20Works%20Project/Raw%20Data" target="_blank" rel="noopener">Raw data <small>CSV</small></a>
+      <a class="btn btn-ghost" href="https://github.com/Garlid/PowerBI-Portfolio/blob/main/Adventure%20Works%20Project/Certificate_of_Completion.pdf" target="_blank" rel="noopener">Course certificate</a>
+    </div>
+  </section>
+
+  <nav class="next" aria-label="More projects">
+    <a href="market-segmentation.html">← Market Segmentation</a>
+    <a href="food-hub.html">Food Hub →</a>
+  </nav>
+</main>
+<footer>© 2026 Susannah Bear</footer>
+</body>
+</html>
